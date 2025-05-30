@@ -1,0 +1,41 @@
+body {
+    color: black;
+    background: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+#alertasClimaticos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 40em;
+    gap: 20px;
+}
+
+.alerta-inmet {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 20em;
+    justify-content: center;
+    align-items: center;
+    border: solid black 3px;
+    width: 36.3em;
+    padding: 2px;
+    border-radius: 30px;
+}
+
+.h2prev {
+    position: relative;
+    bottom: 1em;
+    cursor: pointer;
+}
+
+#descriscos {
+    text-align: center;
+}
+
+#h4 {
+    text-shadow: black 2px 2px 2px;
+    font-size: 20px;
+}
