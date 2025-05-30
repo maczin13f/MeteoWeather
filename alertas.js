@@ -9,12 +9,13 @@ async function alertasClima() {
   if (alertas.length) {
     const alertasHtml = alertas.map(alerta => `
       <div class="alerta-inmet">
-        <h4 id='h4'>${alerta.descricao}</h4>
-        <p id='estadosalertas'>Estados: ${alerta.estados}</p>
-        <p id='severidadealerta'><strong>Severidade:</strong> ${alerta.severidade}</p>
-        <p id='descriscos'>${alerta.riscos}</p>
+        <h4 class='h4'>${alerta.descricao}</h4>
+        <p class='estadosalertas'>Estados: ${alerta.estados}</p>
+        <p class='severidadealerta'><strong>Severidade:</strong> ${alerta.severidade}</p>
+        <p class='descriscos'>${alerta.riscos}</p>
         <h2 class='h2prev'>Prevenções</h2>
-        <div id='prevencoesdiv' style="display: block;">ola mundo</div>
+        <ul id='ulprev' style='display: none';>
+        </ul>
       </div>
     `).join("");
 
@@ -23,8 +24,8 @@ async function alertasClima() {
 
     // Ajustar cor de cada alerta individualmente
     document.querySelectorAll('.alerta-inmet').forEach(alertaEl => {
-      const tituloalerta = alertaEl.querySelector('#severidadealerta');
-      const h4 = alertaEl.querySelector('#h4');
+      const tituloalerta = alertaEl.querySelector('.severidadealerta');
+      const h4 = alertaEl.querySelector('.h4');
 
       if (tituloalerta && tituloalerta.textContent.includes('Grande Perigo')) {
         h4.style.color = 'red';
@@ -34,6 +35,48 @@ async function alertasClima() {
         h4.style.color = 'orange';
       }
     });
+
+    const ulprev = document.getElementById('ulprev');
+    const criarLiDoPrev = document.createElement('li');
+    const licriada = ulprev.appendChild(criarLiDoPrev);
+
+    // Evento de hover no h2prev para mostrar a prevencoesdiv correspondente
+    document.querySelectorAll('.h2prev').forEach(function(h2) {
+      const prevdiv = h2.nextElementSibling; // pega a div logo após o h2
+      const descriscos = h2.previousElementSibling; // pega a <p class='descriscos'>
+
+      h2.addEventListener('mouseenter', () => {
+        if (prevdiv.style.display === 'none') {
+          prevdiv.style.display = 'block';
+          if (descriscos && descriscos.classList.contains('descriscos')) {
+            descriscos.style.display = 'none';
+          }
+        }
+      });
+
+      h2.addEventListener('mouseleave', () => {
+        if (prevdiv.style.display = 'block') {
+          prevdiv.style.display = 'none';
+          if (descriscos && descriscos.classList.contains('descriscos')) {
+            descriscos.style.display = '';
+          }
+        }
+      });
+
+      const descriscostxt = descriscos.textContent;
+
+      if (descriscostxt.includes('alagamentos')) {
+        
+        licriada
+      }
+      else if (descriscostxt.includes('ventos')) {
+        licriada
+          
+      }
+    });
+    
+
+
   } else {
     alertasContainer.style.display = 'none';
   }
@@ -41,18 +84,9 @@ async function alertasClima() {
 
 window.onload = alertasClima;
 
-  const descriscos = document.getElementById('descriscos')
-const prevdiv = document.getElementById('prevencoesdiv');
+  
 
-  document.querySelectorAll('.h2prev').forEach((h2) => {
-    
-    h2.addEventListener('mouseenter', () => {
-      prevdiv.style.display = 'block';
-    });
-    h2.addEventListener('mouseleave', () => {
-      prevdiv.style.display = 'none';
-    });
-  });
+window.onload = alertasClima;
 
 
   

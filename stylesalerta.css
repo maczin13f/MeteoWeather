@@ -31,11 +31,16 @@ body {
     cursor: pointer;
 }
 
-#descriscos {
+.descriscos {
     text-align: center;
 }
 
 #h4 {
     text-shadow: black 2px 2px 2px;
     font-size: 20px;
+}
+
+.prevencoesdiv {
+    display: flex;
+    flex-direction: column;
 }
